@@ -1,0 +1,256 @@
+Comandos Git
+
+git config --global user.name "Rtamduq"
+
+git config --global user.email rtamduq@gmail.com
+
+ver archivo de configuracion
+git config --global -e 
+
+
+crear directorio nuevo
+mkdir nombre del directorio
+
+salir de un directorio
+cd ..
+
+entrar a un directorio 
+cd nombre del directorio
+
+inicializar como si fuera un proyecto para gestionar con git
+git init
+
+nos indicara que ha inicializado un proyecto git vacio
+
+
+listar archivos y carpetas
+ls 
+para listar con los ocultos tambien
+ls -a 
+
+nos muestra esto
+
+HEAD  config  description  hooks/  info/  objects/  refs/
+
+flujo git 
+
+1. computador local seleccionamos los archivos que queremos pasar a stage y verificamos los cambios comando git add
+2. stage es una etapa intermedia para que podamos indicar cuales son lso cambios que efectuamos para el siguiente paso a commit
+3. commit algunos cambios no vienen de stage, los que si vienen a esta etapa commit comando git commit
+4. server en esta etapa pasa a un servidor en la nube git , bit bucket , etc ,pasan los archivos al servidor centralizado y
+ se puede eliminar lo que esta en stage
+
+
+ comenzamos
+
+ comando para abrir la carpeta donde esta el pryecto en vs code
+
+ 1. code .   (el punto siginifica que abra la carpeta donde nos encontramos)
+
+ 2. aqui podemos crear archivos de cualquier extension 
+
+ 3. comando para ver estado de git con git status
+ nos mostrara algo como esto, git no sigue los documentos por defecto, para que lo haga toca poner git add
+ On branch main
+
+    No commits yet
+
+    Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        pythonDiaCinco.py
+
+    nothing added to commit but untracked files present (use "git add" to track)
+
+TAMBIEN SE PUEDE VER EL STATUS QUE NOS MUESTRE NO TANTO DETALLE
+git status -s 
+
+NOS MOSTRARA POR EJEMPLO M modificado, ? significa todavia no ha sido agregado con git add
+$ git status -s
+ M proyecto1.py
+?? archivo2.txt
+
+SI AGREGO CON git add EL ARCHIVO YA QUEDA CON A de agregado
+$ git status -s
+A  archivo2.txt
+ M proyecto1.py
+
+
+4. para que siga un archivo se utiliza comando git add (nombre del archivo)
+
+git add (expersion regular como *.extension y seguira todo los archivos con esta version)
+git add . (el punto indica que los siga a todos pero es una mala practica, solo se utiliza si estamos seguros 100 % que el codigo es util)
+
+
+por ejemplo puse git add pythonDiaCinco.py
+despues escribi git status para ver el estado de git y ya aparece que los esta siguiendo
+
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   pythonDiaCinco.py
+
+
+5. crear un nuevo archivo 2
+para seguirlo nuevamente git add (nombre del archivo.extension)
+
+6. si quisiera seguir a mas de un archivo ponemos seguidos los nombres de archivos separados por espacio
+git add (archivo1.ext) (archivo2.ext) (archivo3.ext)
+
+TENER EN CUENTA QUE SI HACEMOS CAMBIOS A UN ARCHIVO DESPUES DE HABER HECHO GIT ADD 
+NOS MOSTRARA QUE HACEN FALTA SUBIR LOS CAMBIOS A stage
+
+git status
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   pythonDiaCinco.py
+        new file:   pythonDiaCinco2.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   pythonDiaCinco2.py
+
+
+PARA SUBIR CAMBIOS NECESITAMOPS HACER git add nuevamente al archivo
+
+
+AHORA HACEMOS COMMIT 
+Existen dos formas 
+1. la mas recomendada es git commit -m "mensaje acerca de los cambios realizados"
+
+    ejemplo: 
+
+    $ git commit -m "Realice cambios en los procedimientos"
+    [main (root-commit) 2e95787] Realice cambios en los procedimientos
+    2 files changed, 10 insertions(+)
+    create mode 100644 pythonDiaCinco.py
+    create mode 100644 pythonDiaCinco2.py
+
+    al hacer git status nos mostrara 
+    $ git status
+    On branch main
+    nothing to commit, working tree clean
+
+
+2. realizar directamente git commit y pulsar enter
+    nos abre el archivo en el editor de texto el archivo de configuracion del COMMIT hecho donde podremos realizar los comentarios del commit 
+
+ELIMINAR archivos
+rm (nombre del archivo) 
+
+O ELIMINAR EL ARCHIVO Y LLEVAR ESTE CAMBIO DIRECTAMENTE A stage
+git rm (nombre del archivo.ext)
+
+SI SE BORRA UN ARCHIVO LUEGO HAY QUE REALIZAR git add a nuestra etapa de stage para que tome el cambio
+Y LUEGO HACER COMMIT CON Comandos
+git commit -m "Comentario de la accion realizada y en que archivo"
+
+PARA RESTAURAR UN ARCHIVO DESDE stage
+git restore --staged (nombre.ext)
+
+PARA RESTAURAR UN ARCHIVO EN EL PC O local
+git restore (nombre.ext)
+
+Cambiar nombre 
+mv (nombre inicial) (nombre final)
+
+Cambiar nombre y pasarlo directamente a stage
+git mv (nombre inicial) (nombre final)
+
+DEPUES DE ESTO HAY QUE HACER COMMIT
+
+IGNORAR ARCHIVOS DE CONFIGURACION ESPECIFICOS PARA NUESTRA MAQUINA COMO VARIABLES DE ENTORNO
+POR EJEMPLO UNA BD LOCAL, EN ESTE CASO USUARIOS Y CONTRASEÑAS SERAN DIFERENTES A PRODUCCION
+LOS ALMACENAREMOS EN NUESTRA MAQUINA ASI QUE LOS IGNORAREMOS EN GIT
+
+1. crear un archivo dentro de la carpeta del proyecto que se llame .gitignore
+aqui incluiremos los archivos y rutas a ignorar para no cometer fallos en los pasos a stage o commit
+2. pasar a stage el archivo .gitignore con git add .gitignore
+3. hacer commit directamente con git commit -m "hice commit del archivo .gitignore"
+
+
+HACER VER LOS CAMBIOS GRAFICAMENTE QUE VAMOS A SUBIR ANTES DE HACER git add
+git diff
+
+SI queremos ver los cambios que pasaremos a stage 
+
+git diff --staged 
+
+REVISAR TODOS LOS LOGS DE NUESTRO REPOSITORIO SALIR DE ESTA VENTANA PULSANDO LA LETRA q 
+git log 
+
+PARA VER LOGS nosmostrara los commit hechos
+git log --oneline
+
+RAMAS EN GIT
+
+podemos trabajar sobre una rama "branch"
+verificar en que rama nos encontramos con comando 
+git branch 
+
+CREAR RAMA
+git checkout -b (nombre de la rama)
+
+algunas empresas ponen de nombre features/nombre de la funcionalidad
+o features/ el nombre del ticket a solucionar
+
+Mostrar contenido de un archivo
+cat (nombre.ext)
+
+CAMBIAR DE RAMA A main
+git checkout main
+
+TRAER LOS CAMBIOS DE RAMA A a main
+
+1. tenemos que estar ubicados en rama main
+2. aplicar comandos 
+git merge (Nombre de la rama)
+ejemplo git merge ramaA
+
+nos mostrara algo similar a esto
+$ git merge ramaA
+Updating 6fc4374..a494ad4
+Fast-forward
+ archivo2.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+TOMAR TODO EL CODIGO Y SUBIRLO A LA nube
+1. SUBIR A GITHUB Y CREAR UNA CUENTA
+2. se crea un nuevo REPOSITORIO
+cree uno llamado miweb por el ejercicio
+
+SALEN ESTOS COMANDOS DE EJEMPLO
+...or create a new repository on the command line
+echo "# miweb" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/rafael8169/miweb.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/rafael8169/miweb.git
+git branch -M main
+git push -u origin main
+
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+3. TOMAR EL COMANDO PARA QUE SEPA A DONDE VA A ENVIAR LOS CAMBIOS DE GIT A  GITHUB
+git remote add origin https://github.com/rafael8169/miweb.git
+
+PUSH ES PARA SUBIR LOS CAMBIOS LA -U SE CREA LA RAMA Y CON ORIGIN LE DECIMO DONDE QUEREMOS QUE QUEDE CREADA LA RAMA
+git push -u origin main
+
+
