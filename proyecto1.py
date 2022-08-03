@@ -4,7 +4,7 @@ print(type(lista))
 lista.append(5)
 print(lista)
 
-for i in lista:
-    print(f"Posición {i}")
+for i,j in enumerate(lista):
+    print(f"Posición {i} elemento {j}")
 
-print(f"La lista tiene una longitud de {len(lista)} elementos")
+print(f"La lista tiene una longitud de {len(lista)} elementos of the night")
