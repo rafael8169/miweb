@@ -7,4 +7,4 @@ print(lista)
 for i,j in enumerate(lista):
     print(f"Posición {i} elemento {j}")
 
-print(f"La lista tiene una longitud de {len(lista)} elementos of the night")
+print(f"La lista tiene una longitud de {len(lista)} elementos")
