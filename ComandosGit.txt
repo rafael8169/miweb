@@ -254,6 +254,7 @@ PUSH ES PARA SUBIR LOS CAMBIOS LA -U SE CREA LA RAMA Y CON ORIGIN LE DECIMO DOND
 git push -u origin main
 
 IMPORTANTE!!!!
+SEGUIR SIEMPRE ESTOS PASOS
 CADA VEZ QUE CREO UN ARCHIVO Y LO QUIERO SUBIR DEBO HACER ESTO
 1. En el pc que este trabajando debo crear el archivo y dejarlo en la carpeta que esta inicializada en github
 2. hacer git add nombre archivo para que quede en seguimiento y pase a staged
@@ -262,6 +263,7 @@ CADA VEZ QUE CREO UN ARCHIVO Y LO QUIERO SUBIR DEBO HACER ESTO
   hacer git checkout nombre rama para entrar a la rama donde quedara el archivo
 5. hacer git push -u original nombre de rama para hacer push y que quede ya el archivo, si habia creado la rama en el paso 4
   hasta este punto de hacer el push en paso 5 es cuando se vera la rama creada con los archivos creados en github
+6. Hacer git push rama master para que suban los cambios. DEBO RECONFIRMAR YA QUE LA PRIMERA VEZ SI FUNCIONO SOLO CON MERGE
 
 
 08082022 SUBI LOS ARCHIVOS DE LOS PROYECTOS DEL CURSO DE PYTHON A GITHUB
