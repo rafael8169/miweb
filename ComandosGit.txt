@@ -254,3 +254,32 @@ PUSH ES PARA SUBIR LOS CAMBIOS LA -U SE CREA LA RAMA Y CON ORIGIN LE DECIMO DOND
 git push -u origin main
 
 
+08082022 SUBI LOS ARCHIVOS DE LOS PROYECTOS DEL CURSO DE PYTHON A GITHUB
+
+1. Entre a la carpeta pycharmProjects
+2. realice el comando git init
+3. hice git add a los PROYECTOS
+4. hice commit a los PROYECTOS
+5. cree el repositorio en github
+6. hice push y subi los archivos al main en git hub
+
+git remote add origin https://github.com/rafael8169/cursoPythonUdemy.git
+git branch -M main
+git push -u origin main
+
+      resultado del pusho -u origin main
+      $ git push -u origin main
+      Enumerating objects: 36, done.
+      Counting objects: 100% (36/36), done.
+      Delta compression using up to 4 threads
+      Compressing objects: 100% (33/33), done.
+      Writing objects: 100% (36/36), 8.84 KiB | 754.00 KiB/s, done.
+      Total 36 (delta 7), reused 0 (delta 0), pack-reused 0
+      remote: Resolving deltas: 100% (7/7), done.
+      To https://github.com/rafael8169/cursoPythonUdemy.git
+      * [new branch]      main -> main
+      branch 'main' set up to track 'origin/main'.
+
+
+
+
